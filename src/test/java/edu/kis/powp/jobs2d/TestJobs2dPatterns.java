@@ -2,6 +2,7 @@ package edu.kis.powp.jobs2d;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,6 +33,9 @@ public class TestJobs2dPatterns {
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
 		application.addTest("Figure Jane", selectTestFigureOptionListener);
+		application.addTest("Factory Trinagle",selectTestFigureOptionListener);
+		application.addTest("Factory Figure",selectTestFigureOptionListener);
+
 	}
 
 	/**
@@ -61,13 +65,6 @@ public class TestJobs2dPatterns {
 	 * 
 	 * @param application Application context.
 	 */
-	private static void setupDefaultDrawerVisibilityManagement(Application application) {
-		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
-		application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility",
-				new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
-		defaultDrawerWindow.setVisible(true);
-	}
-
 	/**
 	 * Setup menu for adjusting logging settings.
 	 * 
@@ -94,7 +91,6 @@ public class TestJobs2dPatterns {
 			public void run() {
 				Application app = new Application("2d jobs Visio");
 				DrawerFeature.setupDrawerPlugin(app);
-				//setupDefaultDrawerVisibilityManagement(app); //moved shape to main app's window
 				DriverFeature.setupDriverPlugin(app);
 				setupDrivers(app);
 				setupPresetTests(app);
